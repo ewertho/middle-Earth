@@ -1,6 +1,5 @@
 const conn  = require('./database')
 
-
 const sqlPlace =        "CREATE TABLE IF NOT EXISTS Place (\n"+
                         "ID_place int NOT NULL AUTO_INCREMENT,\n"+
                         "Name varchar(150) NOT NULL,\n"+
@@ -26,7 +25,7 @@ const sqlVoting =       "CREATE TABLE IF NOT EXISTS Voting (\n"+
 
 const fk = ""          
 module.exports = (conn)=>{
-
+    
     conn.query(sqlPlace, (error, results, fields)=>{
         (error) ? console.log(error) :  console.log('create table place')
     })

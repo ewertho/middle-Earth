@@ -7,6 +7,18 @@ const passport = require('passport')
 const session = require('express-session')
 const bodyParser = require("body-parser")
 
+//sequelize
+const {Sequelize} = require('sequelize')
+const sequelize = new Sequelize('middleearth', 'root', '', {
+    host: '127.0.0.1',
+    dialect: 'mysql' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+})
+try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+} catch (error) {
+    console.error('Unable to connect to the database:', error);
+}
 //use database
 const conn = require('./data/database')
 const tables = require('./data/tables')
@@ -22,7 +34,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //create tables at server startup
-conn.connect((err)=>{
+
+/* conn.connect((err)=>{
     if(err){
         console.log(err)
     }else{
@@ -30,24 +43,29 @@ conn.connect((err)=>{
     }
     tables(conn)
     
-})
+}) */
 
 //defined routers
 const router = express.Router()
 app.use('/', router)
 
 //routers
-router.get('/login/signin',(req, res)=> {
+router.get('/logged',(req, res)=> {
 
     query.select(req, res)
 })
 
-router.put('/login/signin',(req, res)=> {
+router.post('/logged',(req, res)=> {
 
     query.select(req, res)
 })
 
-router.delete('/login/signin',(req, res)=> {
+router.put('/logged',(req, res)=> {
+
+    query.select(req, res)
+})
+
+router.delete('/logged',(req, res)=> {
 
     query.select(req, res)
 })
