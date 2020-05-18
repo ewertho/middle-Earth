@@ -1,0 +1,16 @@
+usuario
+    id_usuario
+    nome
+    senha
+    cadastro_lugar
+
+cadastro_lugar
+    id_lugar
+    nome_lugar
+    img_lugar
+
+votacao
+    id_votacao
+    id_usuario
+    id_lugar
+    qtde_votos
