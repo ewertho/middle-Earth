@@ -15,7 +15,7 @@ app.use(express.json())
 
 
 //passport
-app.use(session({ secret: 'my precios',resave: true, saveUninitialized:true}))
+app.use(session({ secret: 'myprecios', resave: true, saveUninitialized:true}))
 app.use(passport.initialize())
 app.use(passport.session())
 

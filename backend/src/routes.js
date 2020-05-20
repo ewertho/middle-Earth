@@ -3,17 +3,11 @@ const router = express.Router()
 const UserController = require('./controllers/UserController')
 const PlacesController = require('./controllers/PlacesController')
 
-//routers in session
-router.get('/logged/:user_id/earth', PlacesController.search)
+//routers in session of place
+router.get('/logged/:user_id/earth', PlacesController.index)
 router.post('/logged/:user_id/earth', PlacesController.store)
-
-router.put('/logged',(req, res)=> {
-
-})
-
-router.delete('/logged',(req, res)=> {
-
-})
+router.put('/logged/:user_id/earth',PlacesController.alter)
+router.delete('/logged/:user_id/earth', PlacesController.remove)
 
 //start session
 router.get('/login/signin', UserController.search)
