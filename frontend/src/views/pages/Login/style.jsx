@@ -1,11 +1,9 @@
-import React from "react";
-
+import React from "react"
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
-
+import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap"
 // core components
 import IndexNavbar from "../../components/Navbars/IndexNavbar"
-import Register from './Login/login'
+
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
