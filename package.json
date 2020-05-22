@@ -1,0 +1,25 @@
+{
+  "name": "MinhaTerraMinhaVida",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewertho/middle-Earth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ewertho/middle-Earth/issues"
+  },
+  "homepage": "https://github.com/ewertho/middle-Earth#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.5"
+  }
+}
