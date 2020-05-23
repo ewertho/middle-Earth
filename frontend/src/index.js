@@ -25,7 +25,7 @@ ReactDOM.render(
         path="/landing-page"
         render={props => <LandingPage {...props} />}
       />
-      
+
       <Route
         path="/register-page"
         render={props => <RegisterPage {...props} />}
