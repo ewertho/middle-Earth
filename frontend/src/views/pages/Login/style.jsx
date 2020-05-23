@@ -1,10 +1,9 @@
-import React from "react";
-
+import React from "react"
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
-
+import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap"
 // core components
 import IndexNavbar from "../../components/Navbars/IndexNavbar"
+
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -29,7 +28,7 @@ function RegisterPage() {
             <Col className="ml-auto mr-auto" lg="4" >
               <Card className="card-body bg-dark ml-auto mr-auto">
                 <h5 className="title mx-auto">Welcome</h5>
-
+                
                 <Form className="register-form">
                   <label>Email</label>
                   <Input placeholder="Email" type="text" />
@@ -38,7 +37,7 @@ function RegisterPage() {
                   <br/>
                   <Button  block className="btn-round" color="danger">
                     Register
-
+                    
                   </Button>
                 </Form>
                 <div className="forgot">
@@ -55,7 +54,7 @@ function RegisterPage() {
             </Col>
           </Row>
         </Container>
-
+        
       </div>
     </>
   )
