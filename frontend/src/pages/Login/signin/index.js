@@ -1,14 +1,14 @@
 import React from 'react'
 import axios from 'axios'
-import Register from '../RegisterPage'
+import Register from '../../RegisterPage'
 
 function Process(){
 
   const URL = "https://localhost:8080"
 
-  function search(params){
-    const name = params.name
-    const password = params.password
+  function search(pass, mail){
+    const name = mail
+    const password = pass
     axios.post(`${URL}/signin`, {name, password}).then(resp=>(''))
       .catch(window.alert('usuario ou senha invalido!'))
   }

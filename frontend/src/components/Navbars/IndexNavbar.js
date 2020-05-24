@@ -46,7 +46,7 @@ function IndexNavbar() {
         <div className="navbar-translate">
           <NavbarBrand
             data-placement="bottom"
-            href="/index"
+            href="/home"
           >
             Middle Earth
           </NavbarBrand>
@@ -68,7 +68,7 @@ function IndexNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
-            
+
           </Nav>
         </Collapse>
       </Container>

@@ -13,11 +13,11 @@ import {
 } from "reactstrap";
 
 // core components
-import IndexNavbar from "../../components/Navbars/IndexNavbar.js"
-import ProfilePageHeader from "../../components/Headers/ProfilePageHeader.js"
+import IndexHeader from "../components/Headers/IndexHeader"
+
 
 function ProfilePage() {
-  
+
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -28,17 +28,18 @@ function ProfilePage() {
   })
   return (
     <>
-      <IndexNavbar />
-      <ProfilePageHeader />
+      <IndexHeader />
+
       <div className="section profile-content">
         <Container>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
               <br />
-              <Button className="btn-round" color="default" href="/register-page" outline>
+              <Button className="btn-round" color="default" href="/login/signup-page" outline>
                 Cadastrar novas imagens
               </Button>
-              <Button className="btn-round" color="default" href="/landing-page"outline>
+
+              <Button className="btn-round" color="default" href="/acess/profile-page"outline>
                 lading
               </Button>
             </Col>
@@ -49,15 +50,15 @@ function ProfilePage() {
               <img
                 alt="..."
                 className="img-rounded img-responsive"
-                src={require("../../assets/img/uriel-soberanes.jpg")}
-                
+                src={require("../assets/img/uriel-soberanes.jpg")}
+
               />
               <div className="img-details">
                 <div className="author">
                   <img
                     alt="..."
                     className="img-circle img-no-padding img-responsive"
-                    src={require("../../assets/img/eva.jpg")}
+                    src={require("../assets/img/eva.jpg")}
                   />
                 </div>
                 <p>Sonia Green</p>
@@ -78,14 +79,14 @@ function ProfilePage() {
               <img
                 alt="..."
                 className="img-rounded img-responsive"
-                src={require("../../assets/img/uriel-soberanes.jpg")}
+                src={require("../assets/img/uriel-soberanes.jpg")}
               />
               <div className="img-details">
                 <div className="author">
                   <img
                     alt="..."
                     className="img-circle img-no-padding img-responsive"
-                    src={require("../../assets/img/avatar.jpg")}
+                    src={require("../assets/img/avatar.jpg")}
                   />
                 </div>
                 <p>Sonia Green</p>
@@ -99,10 +100,10 @@ function ProfilePage() {
                 </Label>
               </FormGroup>
             </Col>
-          </Row> 
+          </Row>
         </Container>
       </div>
-    
+
     </>
   )
 }
