@@ -1,9 +1,9 @@
 import React from 'react'
 import  {BrowserRouter,Route, Redirect, Switch}  from "react-router-dom"
 
-import ProfilePage from "../pages/profilePage";
-import Home from "../pages/home.js";
-import LoginPage from "../pages/Login/signin/index";
+import ProfilePage from "../pages/profile/index"
+import Home from "../pages/home/index"
+import LoginPage from "../pages/Login/signin/index"
 
 
 import {isAuthenticated} from '../services/auth'
@@ -42,6 +42,7 @@ export default props=>(
         path="/login/signin-page"
         render={props => <LoginPage {...props} />}
       />
+      
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>

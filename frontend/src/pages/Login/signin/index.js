@@ -1,21 +1,66 @@
-import React from 'react'
-import axios from 'axios'
-import Register from '../../RegisterPage'
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
-function Process(){
+import api from "../../../services/api";
+import { login } from "../../../services/auth";
 
-  const URL = "https://localhost:8080"
+import { Form, Container } from "./style";
 
-  function search(pass, mail){
-    const name = mail
-    const password = pass
-    axios.post(`${URL}/signin`, {name, password}).then(resp=>(''))
-      .catch(window.alert('usuario ou senha invalido!'))
+class SignIn extends Component {
+  state = {
+    email: "",
+    password: "",
+    error: ""
+  };
+
+  handleSignIn = async e => {
+    e.preventDefault();
+    const {email, password} = this.state;
+    if (!email || !password) {
+      this.setState({ error: "Preencha e-mail e senha para continuar!" });
+    } else {
+      try {
+        const response = await api.get("/login/signin", {email, password});
+        login(response.data.token);
+        this.props.history.push("/acess/profile-page");
+      } catch (err) {
+        this.setState({
+          error:
+            "Houve um problema com o login, verifique suas credenciais. T.T"
+        });
+      }
+    }
+  };
+
+  render() {
+    return (
+      <Container>
+        <div
+            className="page-header"
+            style={{
+              backgroundImage: "url(" + require("../../../assets/img/ring.png") + ")"
+            }}
+          ></div>
+        <Form onSubmit={this.handleSignIn}>
+          
+          {this.state.error && <p>{this.state.error}</p>}
+          <input
+            type="email"
+            placeholder="Endereço de e-mail"
+            onChange={e => this.setState({ email: e.target.value })}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            onChange={e => this.setState({ password: e.target.value })}
+          />
+          <button type="submit">Entrar</button>
+          <hr />
+          <Link to="/login/signup-page">Criar conta grátis</Link>
+        </Form>
+      </Container>
+    );
   }
-
-  return(
-    <Register search={search}/>
-  )
 }
 
-export default Process
+export default withRouter(SignIn);

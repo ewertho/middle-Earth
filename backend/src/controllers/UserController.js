@@ -3,13 +3,13 @@ const User = require('../models/User')
 module.exports={
 
     async search(req, res){
-        const name = req.body.name
+        const mail = req.body.email
         const pass = req.body.password
-        const user = await User.findOne({where:[name]})
+        const user = await User.findAll({where:{email:mail, password:pass}})
         if(user===null){
-            res.status(404).send('user not found')
+            return res.status(404).send('user not found')
         }else{
-            res.status(200).send('is here!')
+            return res.status(200).send('is here!')
         }
     },
 

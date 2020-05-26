@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.createTable('places', { 
       id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
@@ -23,6 +24,7 @@ module.exports = {
         onUpdate:'CASCADE',
         onDelete:'CASCADE'
       },
+      
       created_at:{
         type: Sequelize.DATE,
         allowNull: false

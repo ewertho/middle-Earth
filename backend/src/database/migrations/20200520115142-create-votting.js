@@ -7,6 +7,7 @@ module.exports = {
       id:{
         type: Sequelize.INTEGER,
         autoIncremente: true,
+        primaryKey: true,
         allowNull: true
       },
       numbers: {

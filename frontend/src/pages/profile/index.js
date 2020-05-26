@@ -4,8 +4,8 @@ import React from "react"
 import {Button,Card,CardBody,CardFooter,CardTitle,Form,Input,InputGroupAddon,InputGroupText,InputGroup,Container,Row,Col} from "reactstrap";
 
 // core components
-import ExamplesNavbar from "../components/Navbars/IndexNavbar"
-import LandingPageHeader from "../components/Headers/LandingPageHeader"
+import ExamplesNavbar from "../../components/Navbars/IndexNavbar"
+import LandingPageHeader from "../../components/Headers/LandingPageHeader"
 
 
 function LandingPage() {

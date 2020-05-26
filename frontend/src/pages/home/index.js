@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 // core components
-import IndexHeader from "../components/Headers/IndexHeader"
+import IndexHeader from "../../components/Headers/IndexHeader"
 
 
 function ProfilePage() {
@@ -50,7 +50,7 @@ function ProfilePage() {
               <img
                 alt="..."
                 className="img-rounded img-responsive"
-                src={require("../assets/img/uriel-soberanes.jpg")}
+                src={require("../../assets/img/uriel-soberanes.jpg")}
 
               />
               <div className="img-details">
@@ -58,7 +58,7 @@ function ProfilePage() {
                   <img
                     alt="..."
                     className="img-circle img-no-padding img-responsive"
-                    src={require("../assets/img/eva.jpg")}
+                    src={require("../../assets/img/eva.jpg")}
                   />
                 </div>
                 <p>Sonia Green</p>
@@ -79,14 +79,14 @@ function ProfilePage() {
               <img
                 alt="..."
                 className="img-rounded img-responsive"
-                src={require("../assets/img/uriel-soberanes.jpg")}
+                src={require("../../assets/img/uriel-soberanes.jpg")}
               />
               <div className="img-details">
                 <div className="author">
                   <img
                     alt="..."
                     className="img-circle img-no-padding img-responsive"
-                    src={require("../assets/img/avatar.jpg")}
+                    src={require("../../assets/img/avatar.jpg")}
                   />
                 </div>
                 <p>Sonia Green</p>
