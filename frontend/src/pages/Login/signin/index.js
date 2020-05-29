@@ -16,13 +16,19 @@ class SignIn extends Component {
   handleSignIn = async e => {
     e.preventDefault();
     const {email, password} = this.state;
+    console.log('debug'+email+password)
     if (!email || !password) {
       this.setState({ error: "Preencha e-mail e senha para continuar!" });
+      console.log('debug2'+email+password)
     } else {
       try {
-        const response = await api.get("/login/signin", {email, password});
+        console.log('debug3'+email+password)
+        const response = await api.get("/login/signin",{email, password});
+        console.log('debug4'+email+password)
         login(response.data.token);
+        console.log('debug5'+email+password)
         this.props.history.push("/acess/profile-page");
+        console.log('debug6'+email+password)
       } catch (err) {
         this.setState({
           error:
