@@ -6,7 +6,7 @@ module.exports={
     async search(req, res){
         const mail = req.body.email
         const pass = req.body.password
-        console.log(req.body)
+        console.log(req.body.email+ ''+ req.body.password)
         const user = await User.findAll({attributes: ['email', 'password'],where:{email:mail, password:pass}})
         //.then((data)=>console.log(data)).catch(error=>console.log(err))
         if(user.length === 0){
@@ -28,6 +28,7 @@ module.exports={
         if(userFind.length === 0){
             create = true
             const userCreate = await User.create({name, email, password})
+            console.log(userCreate)
             return res.status(200).send(create)
         }else{
             

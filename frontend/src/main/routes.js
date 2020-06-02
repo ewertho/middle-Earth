@@ -26,11 +26,11 @@ export default props=>(
   <BrowserRouter>
     <Switch>
       <Route
-        path="/home"
+        exact={true} path="/"
         render={props => <Home {...props} />}
       />
       <PrivateRoute
-        path="/acess/profile-page"
+        path="/access/profile-page"
         render={props => <ProfilePage {...props} />}
       />
 

@@ -46,7 +46,7 @@ function IndexNavbar() {
         <div className="navbar-translate">
           <NavbarBrand
             data-placement="bottom"
-            href="/home"
+            href="/"
           >
             Middle Earth
           </NavbarBrand>

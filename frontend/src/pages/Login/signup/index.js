@@ -12,7 +12,7 @@ class SignUp extends Component {
     email: "",
     password: "",
     error: ""
-  };
+  }
 
   handleSignUp = async e => {
     e.preventDefault();

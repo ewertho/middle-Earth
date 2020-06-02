@@ -5,20 +5,22 @@ const app = express()
 
 const passport = require('passport')
 const session = require('express-session')
-const cors = require('cors')
+const allowCors = require('./cors')
+const bodyParser = require('body-parser')
 
 require('./database/index')
 
 
 //Jsons
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
-app.use(cors())
+
 //passport
 app.use(session({ secret: 'myprecios', resave: true, saveUninitialized:true}))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(allowCors)
 
 const routes = require('./routes')
 app.use(routes)
