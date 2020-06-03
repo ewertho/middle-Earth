@@ -1,39 +1,50 @@
+const bcrypt = require('bcrypt-nodejs')
+const jwt  = require('jsonwebtoken')
+const auth = require('../config/auth.json')
 const User = require('../models/User')
 const Op = require('Sequelize').Op
 
 module.exports={
 
-    async search(req, res){
-        const mail = req.body.email
-        const pass = req.body.password
-        console.log(req.body.email+ ''+ req.body.password)
-        const user = await User.findAll({attributes: ['email', 'password'],where:{email:mail, password:pass}})
-        //.then((data)=>console.log(data)).catch(error=>console.log(err))
+    async authenticate(req, res){
+        const {email, password} = req.body
+        
+        const user = await User.findAll({attributes: ['id','email', 'password'],where:{email}})
+        
         if(user.length === 0){
             return res.status(404).send('user not found')
         }else{
-            return res.status(200).json(user)
+            
+            if(!await bcrypt.compare(password, user.password)){
+                return res.status(404).send({error: 'Invalid password!'})
+            }else{
+                const token = jwt.sign({id: user.id}, auth.secret, {expiresIn: 86400})
+
+                return res.status(200).send({user, token})
+            }
+            
         }
     },
 
-    async store(req, res){
+    async register(req, res){
         const name = req.body.name
         const email = req.body.email
         const password = req.body.password
 
-        var create = false
-
-        const userFind = await User.findAll({attributes: ['name','email'],where:{[Op.or]: [{name:name}, {email:email}]}})
-        
-        if(userFind.length === 0){
-            create = true
-            const userCreate = await User.create({name, email, password})
-            console.log(userCreate)
-            return res.status(200).send(create)
-        }else{
-            
-            return res.status(404).send(create)
-        }
-        
+        try{
+            if(!await User.findAll({attributes: ['name','email'],where:{[Op.or]: [{name:name}, {email:email}]}})){
+                return res.status(404).send({error:'User alredy exists!'})
+            }else{
+                const userCreate = await User.create({name, email, password})
+                if(!userCreate){
+                    return res.status(401).send({error: 'Failed!'})
+                }else{
+                    return res.status(200).send(userCreate)
+                }
+                
+            }
+        }catch (err){
+            return res.status(404).send({error:'Register failed'})
+        }        
     }
 }

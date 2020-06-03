@@ -10,7 +10,7 @@ router.put('/logged/:user_id/earth',PlacesController.alter)
 router.delete('/logged/:user_id/earth', PlacesController.remove)
 
 //start session
-router.post('/login/signin', UserController.search)
-router.post('/login/signup', UserController.store)
+router.post('/login/signin', UserController.authenticate)
+router.post('/login/signup', UserController.register)
 
 module.exports = router
