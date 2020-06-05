@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const auth = require('../config/auth.json')
 const User = require('../models/User')
@@ -9,19 +9,24 @@ module.exports={
     async authenticate(req, res){
         const {email, password} = req.body
         
-        const user = await User.findAll({attributes: ['id','email', 'password'],where:{email}})
-        
-        if(user.length === 0){
+        const userRequest = await User.findOne({attributes: ['id','email', 'password'],where:{email}})
+
+        if(!userRequest){
             return res.status(404).send('user not found')
         }else{
             
-            if(!await bcrypt.compare(password, user.password)){
-                return res.status(404).send({error: 'Invalid password!'})
-            }else{
-                const token = jwt.sign({id: user.id}, auth.secret, {expiresIn: 86400})
-
-                return res.status(200).send({user, token})
-            }
+            bcrypt.compare(password, userRequest.password, (err, result)=>{
+                if(err==true){
+                    return res.status(401).send({err})
+                }
+                if(result == true){
+                    const token = jwt.sign({id: userRequest.id}, auth.secret, {expiresIn: 86400})
+                    return res.status(200).send({userRequest, token})
+                }else{
+                    return res.json({success: false, message: 'passwords do not match'})
+                }
+                
+            })
             
         }
     },
@@ -35,13 +40,11 @@ module.exports={
             if(!await User.findAll({attributes: ['name','email'],where:{[Op.or]: [{name:name}, {email:email}]}})){
                 return res.status(404).send({error:'User alredy exists!'})
             }else{
-                const userCreate = await User.create({name, email, password})
-                if(!userCreate){
-                    return res.status(401).send({error: 'Failed!'})
-                }else{
-                    return res.status(200).send(userCreate)
-                }
                 
+                const passcrypt = bcrypt.hashSync(password, 8)
+                const userCreate = await User.create({name, email, password: passcrypt})
+                
+                return res.status(200).send(userCreate)
             }
         }catch (err){
             return res.status(404).send({error:'Register failed'})

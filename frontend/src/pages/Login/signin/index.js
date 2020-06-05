@@ -23,7 +23,8 @@ class SignIn extends Component {
     } else {
       try {
         const response = await api.post("/login/signin", { email, password });
-        login(response.data.token);
+        login(response.data.token)
+        console.log(response.data.token)
         this.props.history.push("/access/profile-page")
         
       } catch (err) {
