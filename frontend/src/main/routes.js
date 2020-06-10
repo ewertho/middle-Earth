@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/home", state: { from: props.location } }} />
+        <Redirect to={{ pathname: "/login/signin-page", state: { from: props.location } }} />
       )
     }
   />
@@ -31,7 +31,7 @@ export default props=>(
       />
       <PrivateRoute
         path="/access/profile-page"
-        render={props => <ProfilePage {...props} />}
+        component={props => <ProfilePage {...props} />}
       />
 
       <Route

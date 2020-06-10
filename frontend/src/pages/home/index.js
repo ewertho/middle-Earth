@@ -11,7 +11,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-
+//style="width: 20rem;"
 // core components
 import IndexHeader from "../../components/Headers/IndexHeader"
 
@@ -35,11 +35,11 @@ function ProfilePage() {
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
               <br />
-              <Button className="btn-round" color="default" href="/login/signup-page" outline>
+              <Button className="btn-round" color="default" href="/access/profile-page" outline>
                 Cadastrar novas imagens
               </Button>
 
-              <Button className="btn-round" color="default" href="/acess/profile-page"outline>
+              <Button className="btn-round" color="default" href="/access/profile-page"outline>
                 lading
               </Button>
             </Col>
@@ -47,40 +47,8 @@ function ProfilePage() {
           <br />
           <Row>
             <Col lg="3" md="4" xs="4">
-              <img
-                alt="..."
-                className="img-rounded img-responsive"
-                src={require("../../assets/img/uriel-soberanes.jpg")}
-
-              />
-              <div className="img-details">
-                <div className="author">
-                  <img
-                    alt="..."
-                    className="img-circle img-no-padding img-responsive"
-                    src={require("../../assets/img/eva.jpg")}
-                  />
-                </div>
-                <p>Sonia Green</p>
-              </div>
-            </Col>
-            <Col lg="3" md="4" xs="4">
-              <FormGroup check>
-                <Label check>
-                  <Input defaultValue="" type="checkbox" />
-                  <span className="form-check-sign" />
-                </Label>
-              </FormGroup>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md="3" sm="6">
-              <img
-                alt="..."
-                className="img-rounded img-responsive"
-                src={require("../../assets/img/uriel-soberanes.jpg")}
-              />
+            <div className="card" >
+              <img className="card-img-top" src={require("../../assets/img/uriel-soberanes.jpg")} alt="Card cap"></img>
               <div className="img-details">
                 <div className="author">
                   <img
@@ -89,16 +57,45 @@ function ProfilePage() {
                     src={require("../../assets/img/avatar.jpg")}
                   />
                 </div>
-                <p>Sonia Green</p>
               </div>
-            </Col>
-            <Col lg="3" md="4" xs="4">
-              <FormGroup check>
+              <div className="card-body">
+                <h4 className="card-title">Card title</h4>
+                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/" className="btn btn-primary">Go somewhere</a>
+                <FormGroup check>
                 <Label check>
                   <Input defaultValue="" type="checkbox" />
                   <span className="form-check-sign" />
                 </Label>
               </FormGroup>
+              </div>
+            </div>
+            </Col>
+          
+            <Col lg="3" md="4" xs="4">
+            <div className="card" >
+              <img className="card-img-top" src={require("../../assets/img/uriel-soberanes.jpg")} alt="Card cap"></img>
+              <div className="img-details">
+                <div className="author">
+                  <img
+                    alt="..."
+                    className="img-circle img-no-padding img-responsive"
+                    src={require("../../assets/img/avatar.jpg")}
+                  />
+                </div>
+              </div>
+              <div className="card-body">
+                <h4 className="card-title">Card title</h4>
+                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/" className="btn btn-primary">Go somewhere</a>
+                <FormGroup check>
+                <Label check>
+                  <Input defaultValue="" type="checkbox" />
+                  <span className="form-check-sign" />
+                </Label>
+              </FormGroup>
+              </div>
+            </div>
             </Col>
           </Row>
         </Container>
